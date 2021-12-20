@@ -1,0 +1,65 @@
+﻿@model PasteReadViewModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+<div class="row justify-content-md-center">
+    <div class="col-md-6 col-md-offset-3">
+        <div class="container-fluid text-center">
+            <h1>Details Paste</h1>
+            <div>
+                <hr />
+                <dl class="row">
+                    <dt class = "col-sm-2">
+                        @Html.DisplayNameFor(model => model.Message)
+                    </dt>
+                    <dd class = "col-sm-10">
+                        @Html.DisplayFor(model => model.Message)
+                    </dd>
+                    <dt class = "col-sm-2">
+                        @Html.DisplayNameFor(model => model.Title)
+                    </dt>
+                    <dd class = "col-sm-10">
+                        @Html.DisplayFor(model => model.Title)
+                    </dd>
+                    @if (Model.PasswordPaste != null) {
+                        <dt class = "col-sm-2">
+                            @Html.DisplayNameFor(model => model.PasswordPaste)
+                        </dt>
+                        <dd class = "col-sm-10">
+                            @Html.DisplayFor(model => model.PasswordPaste)
+                        </dd>
+                    }
+                    <dt class = "col-sm-2">
+                        @Html.DisplayNameFor(model => model.CreationTimeOfPaste)
+                    </dt>
+                    <dd class = "col-sm-10">
+                        @Html.DisplayFor(model => model.CreationTimeOfPaste)
+                    </dd>
+                    <dt class = "col-sm-2">
+                        @Html.DisplayNameFor(model => model.ExpirationTime)
+                    </dt>
+                    <dd class = "col-sm-10">
+                    @if(Model.ExpirationTime.Year != 1){
+                        @Html.DisplayFor(model => model.ExpirationTime)
+                    }
+                    else
+                    {
+                        <p>No expiration.</p>
+                    }
+                    </dd>
+                    <dt class = "col-sm-2">
+                        @Html.DisplayNameFor(model => model.PasteCode)
+                    </dt>
+                    <dd class = "col-sm-10">
+                        @Html.DisplayFor(model => model.PasteCode)
+                    </dd>
+                </dl>
+            </div>
+            <div>
+                <a asp-action="Index">Back to List</a> |
+                <a asp-action="Delete" asp-route-pasteCode="@Model.PasteCode">Delete</a> 
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,22 @@
+﻿@model PasteReadViewModel
+@{
+    ViewBag.Title = "Search";
+}
+<div class="row justify-content-md-center">
+    <div class="col-md-6">
+        <div class="container-fluid text-center">
+            <h1>Search</h1>
+            <form asp-controller="Home" asp-action="Search" method="get">
+                <div class="form-group mb-2">
+                    <label name="pasteCode">Type code of paste</label>
+                    <input type="text" class="form-control" name="pasteCode">
+                    <label name="password">Password</label>
+                    <input type="text" class="form-control" name="password"/>
+                </div>
+                <button type="submit" class="btn btn-success">Find</button>
+            </form>
+
+            <h4>@ViewBag.message</h4>
+        </div>
+    </div>
+</div>

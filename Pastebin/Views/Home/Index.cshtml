@@ -1,0 +1,72 @@
+﻿@model IEnumerable<PasteReadViewModel>
+
+@{
+    ViewData["Title"] = "AllPaste";
+}
+
+<div class="row justify-content-md-center">
+    <div class="col-md-6 col-md-offset-3">
+        <div class="container-fluid text-center">
+            <h1>Pastes</h1>
+            <h3>Here are all the pastes!</h3>
+        </div>
+    </div>
+</div>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Message)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PasswordPaste)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreationTimeOfPaste)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PasteCode)
+            </th>
+
+            <th>
+                Actions
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model) {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Message)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    @if (item.PasswordPaste != null)
+                    {
+                        @Html.DisplayFor(modelItem => item.PasswordPaste)
+                    } else
+                    {
+                        <p>No password !</p>
+                    }
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CreationTimeOfPaste)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PasteCode)
+                </td>
+
+                <td>
+                    <a asp-action="Details" asp-route-pasteCode="@item.PasteCode">Details</a> |
+                    <a asp-action="Delete" asp-route-pasteCode="@item.PasteCode">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
