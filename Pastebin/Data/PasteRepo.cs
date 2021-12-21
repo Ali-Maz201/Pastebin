@@ -34,11 +34,11 @@ namespace Pastebin.Data
         {
             
             currentPaste.PasteCode = CreatePasteCode();
-            if (currentPaste.OptionExpirationPaste != "Never" && currentPaste.OptionExpirationPaste != "Burn after read")
+            if (currentPaste.OptionExpirationPaste != "Never")
             {
                 currentPaste.ExpirationTime = OptionTimer(currentPaste.OptionExpirationPaste, currentPaste.CreationTimeOfPaste);
             }
-            await context.AddAsync(currentPaste);
+            await context.Pastes.AddAsync(currentPaste);
             await context.SaveChangesAsync();
         }
 

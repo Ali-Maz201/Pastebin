@@ -21,7 +21,6 @@ namespace Pastebin.Controllers
         {
             this.mapper = mapper;
             this.repository = repository;
-            
         }
         
         [HttpGet]
@@ -46,19 +45,10 @@ namespace Pastebin.Controllers
                     {
                         if (DateTime.Now.CompareTo(pasteFound.ExpirationTime) < 0 || pasteFound.OptionExpirationPaste == "Never")
                         {
-                            if (pasteFound.OptionExpirationPaste == "Burn after read")
-                            {
-                                pasteFound.Exists = "burned";
-                                repository.Update(pasteFound);
-                            }
                             return RedirectToAction("Details", "Home", new { pasteCode = pasteFound.PasteCode});
                         }
                     }
                 } 
-                else
-                {
-                    repository.DeleteConfirmed(pasteFound);
-                }
                 ViewBag.message = "Paste is unavailable.";
             }
             return View();
@@ -88,13 +78,13 @@ namespace Pastebin.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create(Paste model)
+        public async Task<IActionResult> Create(PasteCreateViewModel model)
         {
             if (ModelState.IsValid)
             {
-                
-                repository.CreatePaste(model);
-                ViewBag.message = "The paste with the code " + model.PasteCode + " has been created ";
+                var currentPaste = mapper.Map<PasteCreateViewModel, Paste>(model);
+                await repository.CreatePaste(currentPaste);
+                ViewBag.message = "The paste with the code " + currentPaste.PasteCode + " has been created ";
             }
             return View();
         }
@@ -113,7 +103,7 @@ namespace Pastebin.Controllers
             {
                 return NotFound();
             }
-            var viewModel = mapper.Map<PasteReadViewModel>(currentPaste);
+            var viewModel = mapper.Map<Paste, PasteReadViewModel>(currentPaste);
             return View(viewModel);
         }
 

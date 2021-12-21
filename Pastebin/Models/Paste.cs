@@ -17,7 +17,7 @@ namespace Pastebin.Models
 
         public string? PasswordPaste { get; set; }
 
-        internal string OptionExpirationPaste { get; set; }
+        public string OptionExpirationPaste { get; set; }
 
         public DateTime CreationTimeOfPaste { get; set; } = DateTime.Now;
 
