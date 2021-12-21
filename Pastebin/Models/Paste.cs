@@ -19,6 +19,8 @@ namespace Pastebin.Models
 
         public string OptionExpirationPaste { get; set; }
 
+        public string OptionExposurePaste { get; set; }
+
         public DateTime CreationTimeOfPaste { get; set; } = DateTime.Now;
 
         public DateTime? ExpirationTime { get; set; }
@@ -26,6 +28,7 @@ namespace Pastebin.Models
         public string PasteCode { get; set; }
 
         public string Exists { get; set; } = "true";
+
 
 
     }

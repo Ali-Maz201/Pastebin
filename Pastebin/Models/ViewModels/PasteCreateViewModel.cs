@@ -14,6 +14,8 @@ namespace Pastebin.Models.ViewModels
 
         public string OptionExpirationPaste { get; set; }
 
+        public string OptionExposurePaste { get; set; } 
+
         public string? PasswordPaste { get; set; }
     }
 }

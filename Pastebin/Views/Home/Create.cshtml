@@ -28,6 +28,13 @@
                     </select>
                 </div>
                 <div class="form-group">
+                    <label asp-for="OptionExposurePaste">Paste Expiration</label>
+                    <select  class="form-control" asp-for="OptionExposurePaste">
+                        <option value="Public">Public</option>
+                        <option value="Private">Private</option>
+                    </select>
+                </div>
+                <div class="form-group">
                     <label asp-for="Title">Title</label>
                     <input type="text" class="form-control" asp-for="Title">
                     <span asp-validation-for="Title" class="text-danger"></span>

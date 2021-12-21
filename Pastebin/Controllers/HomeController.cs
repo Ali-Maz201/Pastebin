@@ -26,7 +26,7 @@ namespace Pastebin.Controllers
         [HttpGet]
         public async Task<IActionResult> Index()
         {
-            var getPastes = await repository.GetAllPastes();
+            var getPastes = await repository.GetAllPublicPastes();
 
             var pasteViewModel = mapper.Map<IEnumerable<PasteReadViewModel>>(getPastes);
 
@@ -111,7 +111,6 @@ namespace Pastebin.Controllers
         public async Task<IActionResult> DeleteConfirmed(string pasteCode)
         {
             var currentPaste = await repository.GetPasteByCodeAsync(pasteCode);
-            
             repository.DeleteConfirmed(currentPaste);
             return RedirectToAction(nameof(Index));
         }

@@ -84,9 +84,9 @@ namespace Pastebin.Data
             context.SaveChanges();
         }
 
-        public async Task<List<Paste>> GetAllPastes()
+        public async Task<List<Paste>> GetAllPublicPastes()
         {
-            return await context.Pastes.Where(opt => opt.Exists == "true").ToListAsync();
+            return await context.Pastes.Where(opt => opt.Exists == "true" &&  opt.OptionExposurePaste == "Public").ToListAsync();
         }
 
         public void Update(Paste currentPaste)

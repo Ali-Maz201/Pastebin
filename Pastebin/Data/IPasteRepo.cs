@@ -9,7 +9,7 @@ namespace Pastebin.Data
 {
     public interface IPasteRepo
     {
-        public Task<List<Paste>> GetAllPastes();
+        public Task<List<Paste>> GetAllPublicPastes();
         public Task<Paste> GetPasteByCodeAsync(string? urlRoute);
         public Task CreatePaste(Paste currentPaste);
         public string CreatePasteCode();
