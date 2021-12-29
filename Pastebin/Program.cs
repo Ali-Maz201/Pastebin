@@ -1,7 +1,5 @@
-using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Pastebin.Data;
-using Pastebin.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
