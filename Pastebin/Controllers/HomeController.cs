@@ -37,7 +37,7 @@ namespace Pastebin.Controllers
                 {
                     if (password == pasteFound.PasswordPaste)
                     {
-                        if (DateTime.Now.CompareTo(pasteFound.ExpirationTime) < 0 || pasteFound.OptionExpirationPaste == "Never")
+                        if (DateTime.Now.CompareTo(pasteFound.ExpirationTime) < 0 || pasteFound.ExpirationTime == null)
                         {
                             return RedirectToAction("Details", "Home", new { pasteCode = pasteFound.PasteCode});
                         }
@@ -59,6 +59,10 @@ namespace Pastebin.Controllers
                     return NotFound();
                 }
                 var readViewModel = mapper.Map<PasteReadViewModel>(currentPaste);
+                if (currentPaste.OptionExpirationPaste == "Burn after read")
+                {
+                    repository.DeleteConfirmed(currentPaste);
+                }
                 return View(readViewModel);
             }
             return View();

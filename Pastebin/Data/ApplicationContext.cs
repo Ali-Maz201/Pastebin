@@ -3,7 +3,7 @@ using Pastebin.Models;
 
 namespace Pastebin.Data
 {
-    public class ApplicationContext: DbContext
+    public class ApplicationContext : DbContext
     {
         public ApplicationContext(DbContextOptions<ApplicationContext> options) : base(options)
         {

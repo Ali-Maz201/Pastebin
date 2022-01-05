@@ -34,7 +34,7 @@ namespace Pastebin.Data
         {
             
             currentPaste.PasteCode = CreatePasteCode();
-            if (currentPaste.OptionExpirationPaste != "Never")
+            if (currentPaste.OptionExpirationPaste != "Never" && currentPaste.OptionExpirationPaste != "Burn after read")
             {
                 currentPaste.ExpirationTime = OptionTimer(currentPaste.OptionExpirationPaste, currentPaste.CreationTimeOfPaste);
             }

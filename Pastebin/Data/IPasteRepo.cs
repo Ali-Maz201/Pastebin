@@ -15,7 +15,5 @@ namespace Pastebin.Data
         public string CreatePasteCode();
         public DateTime OptionTimer(string OptionExpirationPaste, DateTime CreationTimeOfPaste);
         public void DeleteConfirmed(Paste currentPaste);
-        public void Update(Paste currentPaste);
-        
     }
 }
